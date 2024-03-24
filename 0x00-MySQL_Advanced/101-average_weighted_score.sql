@@ -9,8 +9,8 @@ BEGIN
   INNER JOIN (
     SELECT user_id, SUM(c.score * p.weight) AS total_w_s, SUM(p.weight) AS total_w
     FROM projects AS p
-    INNER JOIN corrections c ON c.projects = p.id
-    GROUP BY user_id)
+    INNER JOIN corrections c ON c.project_id = p.id
+    GROUP BY user_id
  ) AS s ON u.id = s.user_id
  SET u.average_score = s.total_w_s / s.total_w;
  END; //
