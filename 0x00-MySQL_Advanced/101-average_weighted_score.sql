@@ -13,5 +13,5 @@ BEGIN
     GROUP BY user_id
  ) AS s ON u.id = s.user_id
  SET u.average_score = s.total_w_s / s.total_w;
- END; //
- DELIMITER ;
+END; //
+DELIMITER ;
