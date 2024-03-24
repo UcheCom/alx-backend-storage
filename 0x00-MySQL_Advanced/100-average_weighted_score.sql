@@ -4,7 +4,7 @@
 
 DELIMITER //
 
-CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
+CREATE PROCEDURE ComputeAverageWeightedScoreForUser(IN user_id INT)
 BEGIN
 	SET weight_avg_score = (
 	    SELECT SUM(score * weight) / SUM(weight)
@@ -17,7 +17,7 @@ BEGIN
 	);
 
 	UPDATE users 
-	SET average_score = weight_average_score
+	SET average_score = weight_avg_score
 	WHERE id = user_id;
 END;
 //
