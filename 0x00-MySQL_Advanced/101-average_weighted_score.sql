@@ -11,7 +11,7 @@ BEGIN
     FROM projects p
     INNER JOIN corrections c ON c.project_id = p.id
     GROUP BY user_id
- ) AS s ON u.id = s.user_id
- SET u.average_score = s.total_w_s / s.total_w;
+ ) AS scores ON u.id = scores.user_id
+ SET u.average_score = scores.total_w_s / scores.total_w;
 END; //
 DELIMITER ;
