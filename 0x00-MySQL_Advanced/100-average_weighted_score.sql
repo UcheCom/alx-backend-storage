@@ -17,8 +17,7 @@ BEGIN
 	);
 
 	UPDATE users 
-	SET average_score = weight_avg_score
-	WHERE id = user_id;
+	SET average_score = weight_avg_score;
 END;
 //
 DELIMITER ;
