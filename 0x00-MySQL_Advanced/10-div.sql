@@ -5,18 +5,12 @@
 DELIMITER //
 
 CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS INT
+RETURNS FLOAT
 BEGIN
-    DECLARE result INT;
-    
     -- Check if denominator is zero
-    IF b = 0 THEN
-        SET result = 0;
-    ELSE
-        SET result = a / b;
+    IF b = 0 THEN RETURN 0;
+    ELSE RETURN a/b
     END IF;
-    
-    RETURN result;
 END;
 //
 
