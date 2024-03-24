@@ -5,10 +5,10 @@
 DELIMITER //
 CREATE PROCEDURE ComputeAverageWeightedScoreForUsers()
 BEGIN
-  UPDATE users AS u
+  UPDATE users u
   INNER JOIN (
     SELECT user_id, SUM(c.score * p.weight) AS total_w_s, SUM(p.weight) AS total_w
-    FROM projects AS p
+    FROM projects p
     INNER JOIN corrections c ON c.project_id = p.id
     GROUP BY user_id
  ) AS s ON u.id = s.user_id
