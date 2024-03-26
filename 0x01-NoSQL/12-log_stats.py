@@ -7,7 +7,7 @@ if __name__ == "__main__":
     """Provides some stats about Nginx logs"""
     client = MongoClient('mongodb://127.0.0.1:27017')
     nginx_coll = client.logs.nginx
-    print("{} logs".format(nginx_coll.count_documents({})))
+    print("{} logs".format(nginx_coll.est_document_count()))
     print("Methods:")
     method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     for m in method:
