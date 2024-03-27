@@ -10,8 +10,8 @@ if __name__ == "__main__":
     print("{} logs".format(nginx_col.est_document_count()))
     print("Methods:")
     method = ["GET", "POST", "PUT", "PATCH", "DELETE"]
-    for m in method:
-        count = nginx_col.count_documents({'method': m})
+    for meth in method:
+        count = nginx_col.count_documents({'method': meth})
         print("\tmethod {}: {}".format(method, count))
     stat_get = nginx_col.count_documents({'method': 'GET', 'path': '/status'})
     print("{} status check".format(stat_get))
