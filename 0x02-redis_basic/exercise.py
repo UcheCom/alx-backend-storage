@@ -9,17 +9,18 @@ from functools import wraps
 def call_history(method: Callable) -> Callable:
     """Stores the history of inputs and outputs for a particular function"""
     key_in = method.__qualname__ + ":inputs"
-    key_ou = method.__qualname__ + ":ouputs"
+    key_ou = method.__qualname__ + ":outputs"
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """This is wrapper func for the decorator"""
         inputs = str(args)
         self._redis.rpush(key_in, inputs)
-        ouputs = str(method(self, *args, **kwargs))
-        self._redis.rpush(key_ou, ouputs)
+        outputs = str(method(self, *args, **kwargs))
+        self._redis.rpush(key_ou, outputs)
 
-        return ouputs
+        return outputs
+
     return wrapper
 
 
