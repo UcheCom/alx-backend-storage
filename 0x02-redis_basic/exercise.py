@@ -17,8 +17,8 @@ def replay(method: Callable) -> None:
         count = 0
 
     print("{} was called {} times:".format(name, count))
-    inputs = r.lrange("{}:inputs".format(name), 0, -1)
-    outputs = r.lrange("{}:outputs".format(name), 0, -1)
+    inputs = rd.lrange("{}:inputs".format(name), 0, -1)
+    outputs = rd.lrange("{}:outputs".format(name), 0, -1)
 
     for ip, ou in zip(inputs, outputs):
         try:
