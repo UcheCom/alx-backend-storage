@@ -11,7 +11,7 @@ def get_page(url: str) -> str:
     and tracking the request.
     """
     if url is None or len(url.strip()) == 0:
-        return ""
+        return ''
     rd = redis.Redis()
     key = 'result:{}'.format(url)
     k_url = 'count:{}'.format(url)
